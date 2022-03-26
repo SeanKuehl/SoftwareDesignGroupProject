@@ -1,42 +1,54 @@
 package vv;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class CarScreen extends JFrame {
+public class CarScreen extends JPanel {
 
-	private JPanel contentPane;
+	
+
+
+	private static JLabel label1;
+	private NumberExampleChangeCommand sample;
+
 
 	/**
-	 * Launch the application.
+	 * Create the panel.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CarScreen frame = new CarScreen();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+	
+	
+	
+	public CarScreen() {
+		sample = new NumberExampleChangeCommand();
+		setLayout(null);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				sample.execute();
 			}
 		});
-	}
+		btnNewButton.setBounds(52, 269, 85, 21);
+		add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("New button");
+		btnNewButton_1.setBounds(308, 269, 85, 21);
+		add(btnNewButton_1);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(53, 80, 45, 13);
+		label1 = lblNewLabel;
+		add(lblNewLabel);
 
-	/**
-	 * Create the frame.
-	 */
-	public CarScreen() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+	}
+	
+	
+	public static void SetLabelValue(int newValue) {
+		String newText = Integer.toString(newValue);
+		label1.setText(newText);
 	}
 
 }
