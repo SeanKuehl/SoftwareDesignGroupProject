@@ -158,6 +158,16 @@ public class CarScreen extends JPanel {
 		carDoor = CarDoor;
 		add(CarDoor);
 		
+		JLabel Logo = new JLabel("New label");
+		Logo.setBounds(616, 168, 60, 300);
+		try {
+			ChangeImage("VroomVroom.png", Logo);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		add(Logo);
+		
 		InitializeAllVisuals();
 
 	}
@@ -187,16 +197,12 @@ public class CarScreen extends JPanel {
 	}
 	
 	public void InitializeAllVisuals() {
-		steering.Initialize();
-		transmissionShift.Initialize();
-		signalLights.Initialize();
-		dvdCommand.Initialize();
-		wipers.Initialize();
-		pedal.Initialize();
-		brake.Initialize();
-		parking.Initialize();
-		lock.Initialize();
-		door.Initialize();
+		
+		for (int i = 0; i<commandList.size();i++) {
+			commandList.get(i).Initialize();
+		}
+		
+		
 	}
 	
 	public static void ChangeImage(String imageName, JLabel labelToChange) throws IOException {
@@ -248,8 +254,4 @@ public class CarScreen extends JPanel {
 	public static void ChangeCarDoor(String imageName) throws IOException {
 		ChangeImage(imageName, carDoor);
 	}
-	
-	
-	
-	
 }
