@@ -9,6 +9,7 @@ public class Main {
 		CarScreen screen = new CarScreen();
 		
 		JFrame frame = new JFrame();
+		frame.setSize(800,600);
 		frame.add(screen);
 		frame.setVisible(true);
 
